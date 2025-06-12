@@ -70,5 +70,7 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
                                 ),
                        labels=c("Utrecht", "Amsterdam"),
                        guide = "legend")
+plt.axhline(y=5)
+
 
 
