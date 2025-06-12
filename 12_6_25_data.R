@@ -46,3 +46,29 @@ df_long <- df %>%
     names_to = c("year", ".value"),
     names_pattern = "(\\d{4}) (.*)"
     )
+
+library(ggplot2)
+
+df_plot_utr <- df_long %>% filter(city == "Utrecht")
+
+#xValue <- df_long[1:7,4]
+#yValue <- df_long[1:7,6]
+#data <- data.frame(xValue, yValue)
+
+ggplot(df_plot, aes(x = year, y = mean)) + 
+  geom_point() +
+  geom_smooth()
+#+
+#  geom_smooth(method= "lm", se = TRUE, col = "purple")
+
+df_plot_ams <- df_long %>% filter(city == "Amsterdam")
+ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
+  geom_point(data = df_plot_utr, aes(x = year, y = mean, colour = "red")) +
+  geom_point(data = df_plot_ams, aes(x = year, y = mean, colour = "blue",)) +
+  scale_color_identity(name="",
+                       breaks=c("red","blue"
+                                ),
+                       labels=c("Utrecht", "Amsterdam"),
+                       guide = "legend")
+
+
