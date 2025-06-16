@@ -72,6 +72,11 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
                        breaks=c("red","blue","green"
                                 ),
                        labels=c("Utrecht", "Amsterdam","Eindhoven"),
-                       guide="legend")
+                       guide="legend"
+                       )+
+  coord_cartesian(ylim = c(0,900))+
+  labs(y="mean", x="year") + 
+  theme_minimal()
 
-
+                
+                  
