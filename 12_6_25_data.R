@@ -78,5 +78,48 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
   labs(y="mean", x="year") + 
   theme_minimal()
 
+#Population-Weighted Load Score Calculation
+
+#####AMS#####
+
+df_plot_ams <- df_plot_ams %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_ams[,c("year", "mean", "population", "PopWeightedLoad")])
+df_plot_ams <- df_plot_ams %>%
+  filter(!is.na(mean))
+
+#####UTR#####
+
+df_plot_utr <- df_plot_utr %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_utr[,c("year", "mean", "population", "PopWeightedLoad")])
+
+#####EID#####
+
+df_plot_eid <- df_plot_eid %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_eid[,c("year", "mean", "population", "PopWeightedLoad")])
+
+#Plotting PopWeightedLoad
+
+df_plot_ams <- df_plot_ams%>% filter(!is.na(PopWeightedLoad))
+
+ggplot(df_plot_ams, aes(x=year, y=PopWeightedLoad))+
+  geom_line(data = df_plot_ams, color = "blue",group=1) +
+  geom_line(data = df_plot_utr, color = "red", group=1) +
+  geom_line(data = df_plot_eid, color = "green", group=1)+
+  labs(
+    title = "Population-Weighted MDMA Load in Amsterdam (2011-2017)",
+    x = "Year",
+    y = "Population-Weighted Load (mg/day)") + 
+    scale_color_identity(name="",
+                         breaks=c("red","blue","green"),
+                         labels=c("Utrecht", "Amsterdam","Eindhoven"),
+                         guide="legend"
+    )+
+      coord_cartesian(ylim = c(0,1000000))+
+      theme_minimal()
+
+
                 
                   
