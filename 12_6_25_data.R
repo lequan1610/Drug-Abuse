@@ -53,15 +53,11 @@ df_plot_utr <- df_long %>% filter(city == "Utrecht")
 df_plot_eid <- df_long %>% filter(city == "Eindhoven")
 ggplot(data = df_plot_eid, aes(x = year, y = mean))+
   geom_line(data = df_plot_eid, aes(x = year, y = mean, colour = "green", group=1))
-#xValue <- df_long[1:7,4]
-#yValue <- df_long[1:7,6]
-#data <- data.frame(xValue, yValue)
+
 
 ggplot(df_plot, aes(x = year, y = mean)) + 
   geom_point() +
   geom_smooth()
-#+
-#  geom_smooth(method= "lm", se = TRUE, col = "purple")
 
 df_plot_ams <- df_long %>% filter(city == "Amsterdam")
 ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
@@ -111,14 +107,16 @@ ggplot(df_plot_ams, aes(x=year, y=PopWeightedLoad))+
   labs(
     title = "Population-Weighted MDMA Load in Amsterdam (2011-2017)",
     x = "Year",
-    y = "Population-Weighted Load (mg/day)") + 
+    y = "Population-Weighted Load (mg/day)",
+    color = "City") +
     scale_color_identity(name="",
                          breaks=c("red","blue","green"),
                          labels=c("Utrecht", "Amsterdam","Eindhoven"),
                          guide="legend"
     )+
-      coord_cartesian(ylim = c(0,1000000))+
-      theme_minimal()
+      theme_minimal()+
+  theme(legend.position = "right")
+
 
 
                 
