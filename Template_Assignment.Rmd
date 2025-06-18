@@ -15,15 +15,23 @@ output: pdf_document
 install.packages("tidyverse")
 install.packages("yaml")
 install.packages("rmarkdown")
+install.packages("ggplot2")
+install.packages("readr")
+
+
+
 ```
 
 ```{r packages}
 require(tidyverse)
 require(rmarkdown)
 require(yaml)
+library(rmarkdown)
+library(ggplot2)
+library(readr)
 ```
 
-# Title Page
+# Substance Abuse
 
 Include your names
 
@@ -37,31 +45,45 @@ Use APA referencing throughout your document. [Here's a link to some explanation
 
 ## 1.1 Describe the Social Problem
 
-Include the following:
+Drug abuse continues to pose a significant public health and societal challenge in urban centers across Europe. Among the various methods used to monitor and understand patterns of drug consumption, wastewater-based epidemiology has emerged as a scientifically robust, objective, and non-invasive approach. By analyzing drug residues in municipal wastewater, researchers can estimate real-time community-level drug usage, offering valuable insights that are often difficult to capture through surveys or law enforcement data alone.
 
--   Why is this relevant?
-
--   ...
+This report focuses specifically on MDMA (commonly known as ecstasy)—a powerful psychoactive stimulant associated with recreational use, particularly in nightlife settings. Understanding MDMA consumption patterns is crucial, not only because of its addictive potential and health risks, but also due to its role in shaping broader drug policy and public health responses. Using data from three major Dutch cities—Utrecht, Amsterdam, and Eindhoven—this analysis aims to identify spatial and temporal trends in MDMA usage, assess the impact on local populations, and inform evidence-based interventions. The relevance of this topic lies in its contribution to targeted harm reduction strategies and more effective urban drug policy planning.
 
 # Part 2 - Data Sourcing
 
 ## 2.1 Load in the data
 
-Preferably from a URL, but if not, make sure to download the data and store it in a shared location that you can load the data in from. Do not store the data in a folder you include in the Github repository!
-
 ```{r loading_data}
-dataset <- midwest
-```
+dataset <- scoremdma20112017
+drugs_NL <- scoremdma20112017[108:112,]
+df_long <- drugs_NL
+df_plot_ams <- df_long %>% filter(city == "Amsterdam")
+df_plot_utr <- df_long %>% filter(city == "Utrecht")
+df_plot_eid <- df_long %>% filter(city == "Eindhoven")
 
-midwest is an example dataset included in the tidyverse package
+```
 
 ## 2.2 Provide a short summary of the dataset(s)
 
 ```{r}
-head(dataset)
+head(scoremdma20112017)
 ```
 
-In this case we see 28 variables, but we miss some information on what units they are in. We also don't know anything about the year/moment in which this data has been captured.
+The dataset comprises measurements of five illicit drug residues in wastewater, collected during a one-week monitoring campaign each year from **2011 to 2017**. It spans **143 wastewater treatment plants** across **120 cities in 37 countries**, with each site sampled at least once during the period.
+
+Published by the Swiss Federal Institute of Aquatic Science and Technology (**Eawag**) in collaboration with SCORE, the dataset includes per-capita loads of:
+
+-   Amphetamine
+
+-   Benzoylecgonine (a cocaine metabolite)
+
+-   MDMA
+
+-   Methamphetamine
+
+-   THC-COOH (a cannabis metabolite)
+
+It provides population-normalized mass loads (mg/day per 1,000 inhabitants) of these substances in raw municipal wastewater during annual sampling weeks.
 
 ``` r
 inline_code = TRUE
@@ -71,7 +93,21 @@ These are things that are usually included in the metadata of the dataset. For y
 
 ## 2.3 Describe the type of variables included
 
-Think of things like:
+### **Variable Descriptions:**
+
+-   **`id`**: A unique identifier for each data entry corresponding to a specific city and year.
+
+-   **`city`**: The name of the city where the wastewater sample was collected (e.g., Amsterdam, Utrecht, Eindhoven).
+
+-   **`country`**: The country code representing where the city is located (e.g., NL for the Netherlands).
+
+-   **`year`**: The calendar year during which the wastewater sample was analyzed.
+
+-   **`population`**: The estimated number of people served by the wastewater treatment plant in the respective city
+
+-   **`mean`**: This represents the average daily amount of MDMA detected in municipal wastewater, standardized per 1,000 inhabitants. It is expressed in milligrams per day per 1,000 people (mg/day/1000 people) and reflects community-level MDMA consumption during the sampling period.
+
+<!-- -->
 
 -   Do the variables contain health information or SES information?
 
@@ -93,22 +129,63 @@ Please use a separate 'R block' of code for each type of cleaning. So, e.g. one 
 
 ## 3.2 Generate necessary variables
 
-Variable 1
+**Annual Percentage Change in MDMA Load**
 
 ```{r gen_var1}
 
 ```
 
-Variable 2
+**Population-Weighted Load Score**
 
-```{r gen_var2}
+```{r var_popweightedload}
+df_plot_ams <- df_plot_ams %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_ams[,c("year", "mean", "population", "PopWeightedLoad")])
+df_plot_ams <- df_plot_ams %>%
+  filter(!is.na(mean))
 
+df_plot_utr <- df_plot_utr %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_utr[,c("year", "mean", "population", "PopWeightedLoad")])
+
+df_plot_eid <- df_plot_eid %>%
+  mutate(PopWeightedLoad = (mean/1000) * population)
+print(df_plot_eid[,c("year", "mean", "population", "PopWeightedLoad")])
 ```
 
 ## 3.3 Visualize temporal variation
 
 ```{r}
+ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
+  geom_line(data = df_plot_utr, aes(x = year, y = mean, colour = "red", group=1)) +
+  geom_point(data = df_plot_ams, aes(x = year, y = mean, colour = "blue",)) +
+  geom_line(data = df_plot_eid, aes(x = year, y = mean, colour = "green", group=1)) +
+  scale_color_identity(name="",
+                       breaks=c("red","blue","green"
+                                ),
+                       labels=c("Utrecht", "Amsterdam","Eindhoven"),
+                       guide="legend"
+                       )+
+  labs(y="mean", x="year") + 
+  theme_minimal()
 
+```
+
+```{r}
+#To get a close-up view on Utrecht's and Amsterdam's data
+ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
+  geom_line(data = df_plot_utr, aes(x = year, y = mean, colour = "red", group=1)) +
+  geom_point(data = df_plot_ams, aes(x = year, y = mean, colour = "blue",)) +
+  geom_line(data = df_plot_eid, aes(x = year, y = mean, colour = "green", group=1)) +
+  scale_color_identity(name="",
+                       breaks=c("red","blue","green"
+                                ),
+                       labels=c("Utrecht", "Amsterdam","Eindhoven"),
+                       guide="legend"
+                       ) +
+  coord_cartesian(ylim = c(0,900))+
+  labs(y="mean", x="year") + 
+  theme_minimal()
 ```
 
 ## 3.4 Visualize spatial variation
