@@ -69,7 +69,7 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
                                 ),
                        labels=c("Utrecht", "Amsterdam","Eindhoven"),
                        guide="legend"
-                       )+
+                       ) +
   coord_cartesian(ylim = c(0,900))+
   labs(y="mean", x="year") + 
   theme_minimal()
@@ -100,24 +100,37 @@ print(df_plot_eid[,c("year", "mean", "population", "PopWeightedLoad")])
 
 df_plot_ams <- df_plot_ams%>% filter(!is.na(PopWeightedLoad))
 
+df_combined <- bind_rows(
+  df_plot_ams %>% mutate(city = "Amsterdam"),
+  df_plot_utr %>% mutate(city = "Utrecht"),
+  df_plot_eid %>% mutate(city = "Eindhoven")
+) %>%
+  filter(!is.na(PopWeightedLoad))
+
+#df_combined[city=="Utrecht"]
+
+
+ggplot(df_combined, aes(x = year, y = PopWeightedLoad, group = city, colour = city)) +
+  geom_line() +
+  labs(
+    title = "Population-Weighted MDMA Load (2011-2017)",
+    x = "Year",
+    y = "Population-Weighted Load (mg/day)"
+  ) +
+  coord_cartesian(ylim = c(0,10000))
+# + 
+#  theme_minimal() +
+#  theme(legend.position = "right")  
+
 ggplot(df_plot_ams, aes(x=year, y=PopWeightedLoad))+
-  geom_line(data = df_plot_ams, color = "blue",group=1) +
-  geom_line(data = df_plot_utr, color = "red", group=1) +
-  geom_line(data = df_plot_eid, color = "green", group=1)+
+  geom_line(data = df_plot_ams, colour = "blue",group=1) +
+  geom_line(data = df_plot_utr, colour = "red", group=1) +
+  geom_line(data = df_plot_eid, colour = "green", group=1) +
+  scale_color_identity(breaks=c("red","blue","green"),
+                       labels=c("Utrecht", "Amsterdam","Eindhoven")) +
   labs(
     title = "Population-Weighted MDMA Load in Amsterdam (2011-2017)",
     x = "Year",
     y = "Population-Weighted Load (mg/day)",
-    color = "City") +
-    scale_color_identity(name="",
-                         breaks=c("red","blue","green"),
-                         labels=c("Utrecht", "Amsterdam","Eindhoven"),
-                         guide="legend"
-    )+
-      theme_minimal()+
-  theme(legend.position = "right")
-
-
-
-                
-                  
+    colour = "City") + 
+  theme(legend.position = "bottom")
