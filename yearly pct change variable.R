@@ -5,7 +5,7 @@ score_mdma_2011_2017 <- readr::read_delim(
   trim_ws = TRUE
 )
 drugs_NL <- score_mdma_2011_2017[108:112,]
-df <- drugs_N
+df <- drugs_NL
 
 df <- df %>%
        mutate(
@@ -14,7 +14,7 @@ df <- df %>%
              pct_2013_2014 = round(((`2014 mean` - `2013 mean`) / `2013 mean`) * 100, 1),
              pct_2014_2015 = round(((`2015 mean` - `2014 mean`) / `2014 mean`) * 100, 1),
              pct_2015_2016 = round(((`2016 mean` - `2015 mean`) / `2015 mean`) * 100, 1),
-             pct_2016_2017 = round(
+             pct_2016_2017 = round(https://student.vu.nl/tas/public/ssp/content/serviceflow?unid=6dfe0f5911e84cf9b8eef68ccf70aa4e
                    ifelse(
                          city == "Amsterdam",
                          ((`2017 mean` / `2015 mean`)^(1/2) - 1) * 100,  
