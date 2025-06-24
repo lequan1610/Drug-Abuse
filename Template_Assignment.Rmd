@@ -342,5 +342,11 @@ Our findings can help policymakers target prevention and intervention efforts mo
 Provide the link to your PUBLIC repository here: ...
 
 ## 5.2 Reference list
-Castagna, G. (2025, 24 maart). Cijfers drugs. Trimbos-instituut. https://www.trimbos.nl/kennis/cijfers/drugs/ CBS Statline. (z.d.). https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85457NED/table?ts=1749653240915 Hupkens, E. D. C. (2023, 13 december). Bijlagetabellen. Centraal Bureau Voor de Statistiek. https://www.cbs.nl/nl-nl/longread/statistische-trends/2023/drugsgebruik-en-mentale-gezondheid/bijlagetabellen Illicit drugs in wastewater - SCORE initiative - SCORE_MDMA_wastewater_loads_2011_2017.csv - ERIC. (z.d.). https://opendata.eawag.ch/dataset/illicit-drugs-in-wastewater-score-initiative/resource/df0ea8b4-6720-476f-8de3-cdb9d5968ed6 Ministerie van Justitie en Veiligheid. (2024, 31 januari). Drugs. Government.nl. http://government.nl/topics/drugs#:~:text=In%20the%20Netherlands%20as%20elsewhere,who%20are%20addicted%20to%20drugs. Netherlands, S. (2020, 4 september). One-quarter of population notice drug-related issues in own neighbourhood. Statistics Netherlands. https://www.cbs.nl/en-gb/news/2020/36/one-quarter-of-population-notice-drug-related-issues-in-own-neighbourhood
+Castagna, G. (2025, 24 maart). Cijfers drugs. Trimbos-instituut. https://www.trimbos.nl/kennis/cijfers/drugs/
+CBS Statline. (z.d.). https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85457NED/table?ts=1749653240915
+Drugsgebruik | Volwassenen. (z.d.). Volksgezondheid en Zorg. https://www.vzinfo.nl/drugsgebruik/volwassenen?utm_source=
+Hupkens, E. D. C. (2023, 13 december). Bijlagetabellen. Centraal Bureau Voor de Statistiek. https://www.cbs.nl/nl-nl/longread/statistische-trends/2023/drugsgebruik-en-mentale-gezondheid/bijlagetabellen
+Illicit drugs in wastewater - SCORE initiative - SCORE_MDMA_wastewater_loads_2011_2017.csv - ERIC. (z.d.). https://opendata.eawag.ch/dataset/illicit-drugs-in-wastewater-score-initiative/resource/df0ea8b4-6720-476f-8de3-cdb9d5968ed6
+Ministerie van Justitie en Veiligheid. (2024, 31 januari). Drugs. Government.nl. http://government.nl/topics/drugs#:~:text=In%20the%20Netherlands%20as%20elsewhere,who%20are%20addicted%20to%20drugs.
+Netherlands, S. (2020, 4 september). One-quarter of population notice drug-related issues in own neighbourhood. Statistics Netherlands. https://www.cbs.nl/en-gb/news/2020/36/one-quarter-of-population-notice-drug-related-issues-in-own-neighbourhood
 Use APA referencing throughout your document.
