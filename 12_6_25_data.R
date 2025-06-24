@@ -59,7 +59,7 @@ ggplot(df_plot, aes(x = year, y = mean)) +
   geom_point() +
   geom_smooth()
 
-df_plot_ams <- df_long %>% filter(city == "Amsterdam")
+df_plot_ams <- df_long %>% filter( city == "Amsterdam")
 ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
   geom_line(data = df_plot_utr, aes(x = year, y = mean, colour = "red", group=1)) +
   geom_point(data = df_plot_ams, aes(x = year, y = mean, colour = "blue",)) +
@@ -117,7 +117,7 @@ ggplot(df_combined, aes(x = year, y = PopWeightedLoad, group = city, colour = ci
     x = "Year",
     y = "Population-Weighted Load (mg/day)"
   ) +
-  coord_cartesian(ylim = c(0,10000))
+  coord_cartesian(ylim = c(0,1000000))
 # + 
 #  theme_minimal() +
 #  theme(legend.position = "right")  

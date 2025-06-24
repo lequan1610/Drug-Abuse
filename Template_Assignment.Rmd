@@ -33,9 +33,9 @@ library(readr)
 
 # Substance Abuse
 
-Include your names
+Le Quan Thein - 2848350
 
-Include the tutorial group number
+Tutorial Group 6
 
 Include your tutorial lecturer's name
 
@@ -122,7 +122,12 @@ These are things that are usually included in the metadata of the dataset. For y
 Say we want to include only larger distances (above 2) in our dataset, we can filter for this.
 
 ```{r data_cleaning}
-mean(dataset$percollege)
+dataset <- scoremdma20112017
+drugs_NL <- scoremdma20112017[108:112,]
+df_long <- drugs_NL
+df_plot_ams <- df_long %>% filter(city == "Amsterdam")
+df_plot_utr <- df_long %>% filter(city == "Utrecht")
+df_plot_eid <- df_long %>% filter(city == "Eindhoven")
 ```
 
 Please use a separate 'R block' of code for each type of cleaning. So, e.g. one for missing values, a new one for removing unnecessary variables etc.
