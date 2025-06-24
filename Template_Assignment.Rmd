@@ -271,6 +271,27 @@ Here you provide a description of why the plot above is relevant to your specifi
 # Part 4 - Discussion
 
 ## 4.1 Discuss your findings
+The analysis of MDMA use based on wastewater data in three Dutch cities—Amsterdam, Utrecht, and Eindhoven—provides insights not only into local differences but also contributes to the broader societal debate on substance use. In this section, we reflect on our findings, link them to existing literature, and discuss the societal implications and limitations of our approach.
+
+#### Substance Abuse as a Broader Social Problem
+
+As outlined in our problem motivation, substance abuse has far-reaching consequences: from increased healthcare costs and drug-related crime to public nuisance and mental health challenges. Data from CBS (2020, 2023) and RIVM (2024) confirm rising trends in the use of substances such as ecstasy and cannabis, especially among young adults. Our findings partially reflect this: Amsterdam—an international nightlife hub with a young, tourist-heavy demographic—shows a relatively stable or increasing trend in MDMA residues, suggesting that increased use among youth and visitors is indeed observable at the urban infrastructure level.
+
+#### Urban Differences and Policy Effects
+
+The observed differences between the cities highlight the influence of social, demographic, and policy-driven factors. Utrecht shows an early decline following the introduction of the “weed pass” in 2011–2012, likely reflecting reduced access and social acceptance of drug use. Eindhoven displays a dramatic spike in 2014, which can be attributed to illegal drug-lab waste dumping rather than increased local use—an indicator of the production side of the drug problem. Amsterdam’s more permissive stance toward soft drugs, combined with high tourist inflow, may explain the city's consistent levels of MDMA detected in wastewater.
+
+#### Strengthening the Analysis with New Variables
+
+We introduced two new variables: **Annual Percentage Change** and **Population-Weighted Load**. These provide greater analytical depth. The former reveals year-over-year changes, capturing volatility or stability in trends, while the latter allows for comparisons in absolute usage volume between cities of different sizes. These additions support more accurate interpretation and improve the ability to prioritize interventions based not only on per capita use but also on total urban consumption.
+
+#### Limitations and Recommendations
+
+While wastewater analysis offers objective, anonymized, and large-scale data, it comes with limitations. It measures residues, not individual behaviors; it can be distorted by external events like dumping; and it lacks demographic detail about users. To address these gaps, future research could combine wastewater data with survey data or healthcare records. Additionally, Amsterdam's missing data for 2016 presents a gap in the time series that should be acknowledged when interpreting trends.
+
+#### Societal Implications
+
+Our findings can help policymakers target prevention and intervention efforts more effectively—whether through enhanced monitoring in tourist-heavy areas, youth education campaigns, or stricter control of industrial waste associated with drug production. The analysis offers a clearer picture of **where** substance use is concentrated and **how** it evolves, which is crucial for designing tailored and evidence-based drug policies.
 
 # Part 5 - Reproducibility
 
