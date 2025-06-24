@@ -49,9 +49,14 @@ Use APA referencing throughout your document. [Here's a link to some explanation
 
 ## 1.1 Describe the Social Problem
 
-Drug abuse continues to pose a significant public health and societal challenge in urban centers across Europe. Among the various methods used to monitor and understand patterns of drug consumption, wastewater-based epidemiology has emerged as a scientifically robust, objective, and non-invasive approach. By analyzing drug residues in municipal wastewater, researchers can estimate real-time community-level drug usage, offering valuable insights that are often difficult to capture through surveys or law enforcement data alone.
+Drug abuse continues to pose a significant public health and societal challenge in urban centers across Europe. Among the various methods used to monitor and understand patterns of drug consumption, wastewater-based epidemiology has emerged as a scientifically robust, objective, and non-invasive approach. By analyzing drug residues in municipal wastewater, researchers can estimate real-time, community-level drug usage—offering insights that are often difficult to capture through surveys or law enforcement data alone (Illicit drugs in wastewater – SCORE initiative, n.d.).
 
-This report focuses specifically on MDMA (commonly known as ecstasy)—a powerful psychoactive stimulant associated with recreational use, particularly in nightlife settings. Understanding MDMA consumption patterns is crucial, not only because of its addictive potential and health risks, but also due to its role in shaping broader drug policy and public health responses. Using data from three major Dutch cities—Utrecht, Amsterdam, and Eindhoven—this analysis aims to identify spatial and temporal trends in MDMA usage, assess the impact on local populations, and inform evidence-based interventions. The relevance of this topic lies in its contribution to targeted harm reduction strategies and more effective urban drug policy planning.
+This report focuses specifically on MDMA (commonly known as ecstasy)—a powerful psychoactive stimulant associated with recreational use, particularly in nightlife settings. Understanding MDMA consumption patterns is crucial, not only because of its addictive potential and health risks, but also due to its role in shaping broader drug policy and public health responses.
+
+Recent national data show that one in four Dutch residents reports experiencing drug-related problems in their neighbourhood, illustrating the societal impact of drug use beyond individual health concerns (Statistics Netherlands, 2020). Moreover, recent figures from the Trimbos Institute reveal that MDMA remains among the most commonly used party drugs in the Netherlands, particularly among young adults and in urban nightlife contexts (Castagna, 2025).
+
+Using data from three major Dutch cities—Utrecht, Amsterdam, and Eindhoven—this analysis aims to identify spatial and temporal trends in MDMA usage, assess the impact on local populations, and inform evidence-based interventions. The relevance of this topic lies in its contribution to targeted harm reduction strategies and more effective urban drug policy planning.
+
 
 # Part 2 - Data Sourcing
 
