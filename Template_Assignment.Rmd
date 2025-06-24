@@ -6,7 +6,8 @@
 title: "Substance Abuse"
 author: "Le Quan Thein - 2848350
 Imke de Jonge - 2858894
-Thijmen Gerritsen - 2787153"
+Thijmen Gerritsen - 2787153
+Brian enChi - 2857940"
 date: "24-06-2025"
 output: pdf_document
 ---
@@ -38,6 +39,7 @@ library(readr)
 Le Quan Thein - 2848350
 Imke de Jonge - 2858894
 Thijmen Gerritsen - 2787153
+Brian enChi - 2857940
 
 Tutorial Group 6
 
