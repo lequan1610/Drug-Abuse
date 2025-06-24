@@ -231,8 +231,10 @@ ggplot() +
   labs(title = "Mean levels of MDMA in wastewater in 2017 (mg/1000 people/day") +
   theme_minimal()
 ```
+The spatial visualization gives us an idea of where in the Netherlands MDMA is most commonly found in sewage water in the year 2017, the most recent year of the study. In the plot, we can see that especially Amsterdam and Eindhoven have a high concentration of MDMA in their sewage. This is relevant for the broader problem of drug abuse, because it explains where this drug is most commonly consumed, and where it is produced. We notice, for example, that Amsterdam has a much higher concentration of MDMA than Utrecht. This can mean that Utrecht has had a succesful prevention/intervention policy that could be implemented in Amsterdam as well. It also indicates that time, money and effort are better allocated to Amsterdam since the problem of MDMA use is higher there than it is in Utrecht. 
+The spatial visualisation can be used as a starting point for further research, if data for more wastewater treatment plants will be available. Noord-Brabant, the province where Eindhoven is located, is known for having a large amount of MDMA manufacturing labs. If you compare the MDMA level found in Eindhoven to other wastewater treatment plants in Noord-Brabant, you can get a better idea of which places in the province have a higher density of drug manufacturing labs. 
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+
 
 ## 3.5 Visualize sub-population variation
 
