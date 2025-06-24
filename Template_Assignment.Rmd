@@ -3,7 +3,7 @@
 ```
 
 ---
-  title: "Substance Abuse"
+Title: "Substance Abuse"
 author: "Le Quan Thein - 2848350
 Imke de Jonge - 2858894
 Thijmen Gerritsen - 2787153
