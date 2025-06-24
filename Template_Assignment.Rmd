@@ -3,18 +3,17 @@
 ```
 
 ---
-title: "Substance Abuse"
+  title: "Substance Abuse"
 author: "Le Quan Thein - 2848350
 Imke de Jonge - 2858894
-Thijmen Gerritsen - 2787153
-Brian enChi - 2857940"
+Thijmen Gerritsen - 2787153"
 date: "24-06-2025"
 output: pdf_document
 ---
-
-# Set-up your environment
-
-```{r package_install, include=FALSE}
+  
+  # Set-up your environment
+  
+  ```{r package_install, include=FALSE}
 install.packages("tidyverse")
 install.packages("yaml")
 install.packages("rmarkdown")
@@ -39,7 +38,7 @@ library(readr)
 Le Quan Thein - 2848350
 Imke de Jonge - 2858894
 Thijmen Gerritsen - 2787153
-Brian enChi - 2857940
+Abel Middel - 2786769
 
 Tutorial Group 6
 
@@ -47,11 +46,10 @@ Jack Fitzgerald
 
 # Part 1 - Identify a Social Problem
 
-Use APA referencing throughout your document. [Here's a link to some explanation.](https://www.mendeley.com/guides/apa-citation-guide/)
 
 ## 1.1 Describe the Social Problem
 
-Drug abuse continues to pose a significant public health and societal challenge in urban centers across Europe. Among the various methods used to monitor and understand patterns of drug consumption, wastewater-based epidemiology has emerged as a scientifically robust, objective, and non-invasive approach. By analyzing drug residues in municipal wastewater, researchers can estimate real-time, community-level drug usage—offering insights that are often difficult to capture through surveys or law enforcement data alone (Illicit drugs in wastewater – SCORE initiative, n.d.).
+Drug abuse continues to pose a significant public health and societal challenge in urban centers across Europe. Among the various methods used to monitor and understand patterns of drug consumption, wastewater-based epidemiology has emerged as a scientifically robust, objective, and non-invasive approach. By analyzing drug residues in municipal wastewater, researchers can estimate real-time, community-level drug usage—offering insights that are often difficult to capture through surveys or law enforcement data alone (Illicit drugs in wastewater – ERIC, 2019).
 
 This report focuses specifically on MDMA (commonly known as ecstasy)—a powerful psychoactive stimulant associated with recreational use, particularly in nightlife settings. Understanding MDMA consumption patterns is crucial, not only because of its addictive potential and health risks, but also due to its role in shaping broader drug policy and public health responses.
 
@@ -82,9 +80,9 @@ head(scoremdma20112017)
 
 The dataset comprises measurements of five illicit drug residues in wastewater, collected during a one-week monitoring campaign each year from **2011 to 2017**. It spans **143 wastewater treatment plants** across **120 cities in 37 countries**, with each site sampled at least once during the period.
 
-Published by the Swiss Federal Institute of Aquatic Science and Technology (**Eawag**) in collaboration with SCORE, the dataset includes per-capita loads of:
-
--   Amphetamine
+Published by the Swiss Federal Institute of Aquatic Science and Technology (**Eawag**) in collaboration with Sewage CORE group Europe, an organization that aims to standardize the way the analysis of wastewater is conducted(SCORE network, 2024). the dataset includes per-capita loads of:
+  
+  -   Amphetamine
 
 -   Benzoylecgonine (a cocaine metabolite)
 
@@ -119,18 +117,18 @@ These are things that are usually included in the metadata of the dataset. For y
 -   **`mean`**: This represents the average daily amount of MDMA detected in municipal wastewater, standardized per 1,000 inhabitants. It is expressed in milligrams per day per 1,000 people (mg/day/1000 people) and reflects community-level MDMA consumption during the sampling period.
 
 <!-- -->
-
--   Do the variables contain health information or SES information?
-
--   Have they been measured by interviewing individuals or is the data coming from administrative sources?
-
-*For the sake of this example, I will continue with the assignment...*
-
-# Part 3 - Quantifying
-
-## 3.1 Data cleaning
-
-Say we want to include only larger distances (above 2) in our dataset, we can filter for this.
+  
+  -   Do the variables contain health information or SES information?
+  
+  -   Have they been measured by interviewing individuals or is the data coming from administrative sources?
+  
+  *For the sake of this example, I will continue with the assignment...*
+  
+  # Part 3 - Quantifying
+  
+  ## 3.1 Data cleaning
+  
+  Say we want to include only larger distances (above 2) in our dataset, we can filter for this.
 
 ```{r data_cleaning}
 dataset <- scoremdma20112017
@@ -146,27 +144,27 @@ Please use a separate 'R block' of code for each type of cleaning. So, e.g. one 
 ## 3.2 Generate necessary variables
 
 **Annual Percentage Change in MDMA Load**
-
-```{r gen_var1}
+  
+  ```{r gen_var1}
 df <- drugs_NL
 
 df <- df %>%
-       mutate(
-             pct_2011_2012 = round(((`2012 mean` - `2011 mean`) / `2011 mean`) * 100, 1),
-             pct_2012_2013 = round(((`2013 mean` - `2012 mean`) / `2012 mean`) * 100, 1),
-             pct_2013_2014 = round(((`2014 mean` - `2013 mean`) / `2013 mean`) * 100, 1),
-             pct_2014_2015 = round(((`2015 mean` - `2014 mean`) / `2014 mean`) * 100, 1),
-             pct_2015_2016 = round(((`2016 mean` - `2015 mean`) / `2015 mean`) * 100, 1),
-             pct_2016_2017 = round(
-                   ifelse(
-                         city == "Amsterdam",
-                         ((`2017 mean` / `2015 mean`)^(1/2) - 1) * 100,  
-                         ((`2017 mean` - ifelse(is.na(`2016 mean`), 1, `2016 mean`)) /
-                             +                      ifelse(is.na(`2016 mean`), 1, `2016 mean`)) * 100
-                     ),
-                   1
-               )
-         )
+  mutate(
+    pct_2011_2012 = round(((`2012 mean` - `2011 mean`) / `2011 mean`) * 100, 1),
+    pct_2012_2013 = round(((`2013 mean` - `2012 mean`) / `2012 mean`) * 100, 1),
+    pct_2013_2014 = round(((`2014 mean` - `2013 mean`) / `2013 mean`) * 100, 1),
+    pct_2014_2015 = round(((`2015 mean` - `2014 mean`) / `2014 mean`) * 100, 1),
+    pct_2015_2016 = round(((`2016 mean` - `2015 mean`) / `2015 mean`) * 100, 1),
+    pct_2016_2017 = round(
+      ifelse(
+        city == "Amsterdam",
+        ((`2017 mean` / `2015 mean`)^(1/2) - 1) * 100,  
+        ((`2017 mean` - ifelse(is.na(`2016 mean`), 1, `2016 mean`)) /
+           +                      ifelse(is.na(`2016 mean`), 1, `2016 mean`)) * 100
+      ),
+      1
+    )
+  )
 library(ggplot2)
 
 
@@ -197,8 +195,8 @@ ggplot(drugs_long_filtered, aes(x = year_start, y = signed_log(pct_change), colo
 With this plot, we can see the yearly percentage change in the amount of MDMA found in the water of the different cities. We used a signed log on the y-axis to account for the fact that change can be both positive and negative, and keeping the plot readable. For 2016, there was data missing from Amsterdam, so we decided to use the average growth rate between the years 2015 and 2017. Otherwise R would show an enormous decrease between 2015 and 2016, and an enormous increase between 2016 and 2017, which looks unrealistic on a graph.
 
 **Population-Weighted Load Score**
-
-```{r var_popweightedload}
+  
+  ```{r var_popweightedload}
 df_plot_ams <- df_plot_ams %>%
   mutate(PopWeightedLoad = (mean/1000) * population)
 print(df_plot_ams[,c("year", "mean", "population", "PopWeightedLoad")])
@@ -223,10 +221,10 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
   geom_line(data = df_plot_eid, aes(x = year, y = mean, colour = "green", group=1)) +
   scale_color_identity(name="",
                        breaks=c("red","blue","green"
-                                ),
+                       ),
                        labels=c("Utrecht", "Amsterdam","Eindhoven"),
                        guide="legend"
-                       )+
+  )+
   labs(y="mean", x="year") + 
   theme_minimal()
 
@@ -240,10 +238,10 @@ ggplot(data = df_plot_utr, aes(x = year, y = mean)) +
   geom_line(data = df_plot_eid, aes(x = year, y = mean, colour = "green", group=1)) +
   scale_color_identity(name="",
                        breaks=c("red","blue","green"
-                                ),
+                       ),
                        labels=c("Utrecht", "Amsterdam","Eindhoven"),
                        guide="legend"
-                       ) +
+  ) +
   coord_cartesian(ylim = c(0,900))+
   labs(y="mean", x="year") + 
   theme_minimal()
@@ -295,8 +293,8 @@ The spatial visualisation can be used as a starting point for further research, 
 ## 3.5 Visualize sub-population variation
 
 What is the poverty rate by state?
-
-```{r visualise_subpopulations}
+  
+  ```{r visualise_subpopulations}
 library(ggplot2)
 data <- read.csv("cannabis_usage_by_group.csv")
 
@@ -306,7 +304,7 @@ ggplot(data, aes(x = Group, y = Cannabis.Usage....)) +
   labs(title = "Cannabis Use in the Past Year by Age Group",
        x = "",
        y = "Percentage (%)") +
-  theme_minimal()
+  theme_minimal()
 ```
 
 The boxplot comparing cannabis use between two age groups—Sub Population (15–24) and Main Population (25+)—reveals clear differences in usage patterns. Young adults (15–24) exhibit a higher median rate of cannabis use over the past year, alongside greater variability. This suggests not only more frequent usage in this group but also a wider range of behaviors, with some subgroups showing especially elevated rates. The interquartile range for the 15–24 group is significantly broader, indicating that cannabis consumption among young people is more heterogeneous. In contrast, the 25+ group demonstrates a lower and more concentrated distribution of cannabis usage, implying more uniform and restrained behavior within this demographic. One possible explanation lies in social and developmental factors—young adults are more likely to experiment, be influenced by peer pressure, or engage in risk-taking behavior. The data may also reflect generational shifts in attitudes toward cannabis, with younger cohorts being more accepting or curious. From a public health or policy perspective, these findings underline the importance of targeted interventions aimed at youth, especially in preventive education or harm reduction strategies. Overall, age remains a strong determinant of drug-use patterns, and understanding these differences is essential for effective, age-sensitive health communication and policymaking.
@@ -316,10 +314,30 @@ The boxplot comparing cannabis use between two age groups—Sub Population (15�
 Analyze the relationship between two variables.
 
 ```{r analysis}
-
+# continuing with the code from the temporal analysis
+ggplot(df_all_cities_clean, aes(x = year, y = mean, color = city)) +
+  geom_line(aes(linetype = "Data")) +
+  geom_smooth(aes(linetype = "Trendline"), method = "lm", se = FALSE, size = 1) +
+  geom_point() +
+  geom_vline(xintercept = 2013.5, linetype = "dotted", color = "black", size = 0.8) +
+  geom_vline(xintercept = 2014.5, linetype = "dotted", color = "black", size = 0.8) +
+  
+  scale_y_log10() +
+  scale_color_manual(
+    name = "City / Line",
+    values = c("Utrecht" = "red", "Amsterdam" = "blue", "Eindhoven" = "green", "Reference year" = "black")
+  ) +
+  scale_linetype_manual(
+    name = "Type",
+    values = c("Data" = "solid", "Trendline" = "dashed", "Reference year" = "dotted")
+  ) +
+  
+  
+  labs(x = "Year", y = "Mean MDMA Value (log scale)") +
+  theme_minimal()
 ```
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+This plot highlights the increase in MDMA in Eindhoven in the year 2014. When the data for 2014 came out, people thought it was part of a structural increase in MDMA levels found in sewage water(ANP, 2015), but in a year later it decreased to "normal levels" (Emke & Ruijgers, 2016) for the cities of Amsterdam, Utrecht and Eindhoven. This seems to align with our data, because the spike of MDMA levels in 2014 looks like a one-time event instead of a structural change in the rate of dumping and consumption. Furthermore, in the year 2016, Eindhoven, Amsterdam and Utrecht showed relatively similar levels of MDMA (taking into account that we have no exact number for Amsterdam that year). However, drug waste dumping is still a big issue in the area around Eindhoven, because the levels of MDMA found is still higher than the city of Utrecht, for example.
 
 # Part 4 - Discussion
 
@@ -333,7 +351,7 @@ As outlined in our problem motivation, substance abuse has far-reaching conseque
 
 ### Urban Differences and Policy Effects
 
-The observed differences between the cities highlight the influence of social, demographic, and policy-driven factors. Utrecht shows an early decline following the introduction of the so-called “weed pass” in 2011–2012, likely reflecting reduced access to and social acceptance of drug use (Ministerie van Justitie en Veiligheid, 2024). Eindhoven displays a dramatic spike in 2014, which can be attributed to illegal drug-lab waste dumping rather than increased local use—an indicator of the production side of the drug problem (ERIC, n.d.). Amsterdam’s more permissive stance toward soft drugs, combined with high tourist inflow, may explain the city's consistently higher levels of MDMA detected in wastewater over the years.
+The observed differences between the cities highlight the influence of social, demographic, and policy-driven factors. Utrecht shows an early decline following the introduction of the so-called “weed pass” in 2011–2012, likely reflecting reduced access to and social acceptance of drug use (Ministerie van Justitie en Veiligheid, 2024). Eindhoven displays a dramatic spike in 2014, which can be attributed to illegal drug-lab waste dumping rather than increased local use—an indicator of the production side of the drug problem (ERIC, 2019). Amsterdam’s more permissive stance toward soft drugs, combined with high tourist inflow, may explain the city's consistently higher levels of MDMA detected in wastewater over the years.
 
 ### Strengthening the Analysis with New Variables
 
@@ -355,13 +373,16 @@ Our findings can help policymakers target prevention and intervention efforts mo
 
 ## 5.1 Github repository link
 
-Provide the link to your PUBLIC repository here: ...
+Provide the link to your PUBLIC repository here: https://github.com/lequan1610/Drug-Abuse 
 
 ## 5.2 Reference list
 Castagna, G. (2025, 24 maart). Cijfers drugs. Trimbos-instituut. https://www.trimbos.nl/kennis/cijfers/drugs/
-CBS Statline. (z.d.). https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85457NED/table?ts=1749653240915
-Drugsgebruik | Volwassenen. (z.d.). Volksgezondheid en Zorg. https://www.vzinfo.nl/drugsgebruik/volwassenen?utm_source=
-Hupkens, E. D. C. (2023, 13 december). Bijlagetabellen. Centraal Bureau Voor de Statistiek. https://www.cbs.nl/nl-nl/longread/statistische-trends/2023/drugsgebruik-en-mentale-gezondheid/bijlagetabellen
-Illicit drugs in wastewater - SCORE initiative - SCORE_MDMA_wastewater_loads_2011_2017.csv - ERIC. (z.d.). https://opendata.eawag.ch/dataset/illicit-drugs-in-wastewater-score-initiative/resource/df0ea8b4-6720-476f-8de3-cdb9d5968ed6
+  CBS Statline. (z.d.). https://opendata.cbs.nl/statline/#/CBS/nl/dataset/85457NED/table?ts=1749653240915
+  Drugsgebruik | Volwassenen. (n.d.). Volksgezondheid en Zorg. https://www.vzinfo.nl/drugsgebruik/volwassenen?utm_source=
+  Hupkens, E. D. C. (2023, 13 december). Bijlagetabellen. Centraal Bureau Voor de Statistiek. https://www.cbs.nl/nl-nl/longread/statistische-trends/2023/drugsgebruik-en-mentale-gezondheid/bijlagetabellen
+Illicit drugs in wastewater - SCORE initiative - SCORE_MDMA_wastewater_loads_2011_2017.csv - ERIC. (2019). https://opendata.eawag.ch/dataset/illicit-drugs-in-wastewater-score-initiative/resource/df0ea8b4-6720-476f-8de3-cdb9d5968ed6
 Ministerie van Justitie en Veiligheid. (2024, 31 januari). Drugs. Government.nl. http://government.nl/topics/drugs#:~:text=In%20the%20Netherlands%20as%20elsewhere,who%20are%20addicted%20to%20drugs.
 Netherlands, S. (2020, 4 september). One-quarter of population notice drug-related issues in own neighbourhood. Statistics Netherlands. https://www.cbs.nl/en-gb/news/2020/36/one-quarter-of-population-notice-drug-related-issues-in-own-neighbourhood
+ANP. (2015, June 4). Vaker dumping van drugsresten in riool Nederlandse steden. nu.nl. Retrieved June 24, 2025, from https://www.nu.nl/gezondheid/4062017/vaker-dumping-van-drugsresten-in-riool-nederlandse-steden.html?utm_
+Emke, E., & Ruijgers, H. (2016, December 13). New dumps and increase in the use of cocaine and cannabis. KWR. https://www.kwrwater.nl/en/actueel/new-dumps-and-increase-in-the-use-of-cocaine-and-cannabis/?utm_
+SCORE Network – Bringing together experts and knowledge on wastewater-based epidemiology. (2024). https://score-network.eu/
