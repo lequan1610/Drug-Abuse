@@ -4,8 +4,10 @@
 
 ---
 title: "Substance Abuse"
-author: "Studentnames and studentnumbers here"
-date: "`r Sys.Date()`"
+author: "Le Quan Thein - 2848350
+Imke de Jonge - 2858894
+Thijmen Gerritsen - 2787153"
+date: "24-06-2025"
 output: pdf_document
 ---
 
@@ -35,6 +37,7 @@ library(readr)
 
 Le Quan Thein - 2848350
 Imke de Jonge - 2858894
+Thijmen Gerritsen - 2787153
 
 Tutorial Group 6
 
@@ -184,6 +187,7 @@ ggplot(drugs_long_filtered, aes(x = year_start, y = signed_log(pct_change), colo
   ) +
   theme_minimal()
 ```
+With this plot, we can see the yearly percentage change in the amount of MDMA found in the water of the different cities. We used a signed log on the y-axis to account for the fact that change can be both positive and negative, and keeping the plot readable. For 2016, there was data missing from Amsterdam, so we decided to use the average growth rate between the years 2015 and 2017. Otherwise R would show an enormous decrease between 2015 and 2016, and an enormous increase between 2016 and 2017, which looks unrealistic on a graph.
 
 **Population-Weighted Load Score**
 
